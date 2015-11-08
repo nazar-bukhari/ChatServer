@@ -134,11 +134,42 @@ public class UserCommand {
                 }
 
                 break;
+
             case "groups" :
                 System.out.println("groups command");
                 break;
             case "users" :
                 System.out.println("users command");
+
+                group = inputSet[2];
+                file = new File(group+".txt");
+                fileName = file.getName();
+
+                //Group exists
+                if(file.exists()){
+
+                    BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(fileName)));
+                    String line = null;
+
+                    //Checking null group
+                    if(br.readLine() != null) {
+
+                        System.out.println(ReplyCode.OK.getReplyType());
+//                        System.out.println("br "+br.readLine());
+                        br = new BufferedReader(new InputStreamReader(new FileInputStream(fileName)));
+                        while ((line = br.readLine()) != null) {
+                            System.out.println(line);
+                        }
+                        br.close();
+                    }
+                    else{
+                        System.out.println(ReplyCode.NORESULT.getReplyType()); //User is not a member of the group
+                    }
+                }
+                else{
+                    System.out.println(ReplyCode.NORESULT.getReplyType()); //No such group
+                }
+
                 break;
             case "send" :
                 System.out.println("send command");
