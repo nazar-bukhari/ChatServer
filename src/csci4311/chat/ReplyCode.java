@@ -5,9 +5,9 @@ package csci4311.chat;
  */
 public enum ReplyCode {
 
-    OK("200 OK"),
-    NORESULT("201 NO result"),
-    ERROR("400 Error");
+    OK("msgp 200 OK"),
+    NORESULT("msgp 201 NO result"),
+    ERROR("msgp 400 Error");
 
     private String replyType;
 
