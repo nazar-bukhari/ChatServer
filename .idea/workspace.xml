@@ -1,7 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0155d7bd-0b85-4d83-ad7d-fef1d76e0962" name="Default" comment="" />
+    <list default="true" id="0155d7bd-0b85-4d83-ad7d-fef1d76e0962" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/description.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/project-template.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/scopes/scope_settings.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/123.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/222.txt" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChatServer/csci4311/chat/Main.class" afterPath="$PROJECT_DIR$/out/production/ChatServer/csci4311/chat/Main.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChatServer/csci4311/chat/ReplyCode.class" afterPath="$PROJECT_DIR$/out/production/ChatServer/csci4311/chat/ReplyCode.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChatServer/csci4311/chat/UserCommand.class" afterPath="$PROJECT_DIR$/out/production/ChatServer/csci4311/chat/UserCommand.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/442.txt" afterPath="$PROJECT_DIR$/442.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/443.txt" afterPath="$PROJECT_DIR$/443.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ChatServer.iml" afterPath="$PROJECT_DIR$/ChatServer.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/csci4311/chat/Main.java" afterPath="$PROJECT_DIR$/src/csci4311/chat/Main.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/csci4311/chat/ReplyCode.java" afterPath="$PROJECT_DIR$/src/csci4311/chat/ReplyCode.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/csci4311/chat/UserCommand.java" afterPath="$PROJECT_DIR$/src/csci4311/chat/UserCommand.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nazar.txt" afterPath="$PROJECT_DIR$/nazar.txt" />
+    </list>
     <ignored path="ChatServer.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -29,7 +53,7 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/csci4311/chat/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
+            <state vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="255">
               <caret line="6" column="20" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
               <folding />
             </state>
@@ -39,8 +63,8 @@
       <file leaf-file-name="UserCommand.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/csci4311/chat/UserCommand.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.503937" vertical-offset="1990" max-vertical-offset="2865">
-              <caret line="154" column="47" selection-start-line="154" selection-start-column="47" selection-end-line="154" selection-end-column="47" />
+            <state vertical-scroll-proportion="0.503937" vertical-offset="1825" max-vertical-offset="2865">
+              <caret line="143" column="36" selection-start-line="143" selection-start-column="36" selection-end-line="143" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -51,7 +75,7 @@
       <file leaf-file-name="443.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/443.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="120">
+            <state vertical-scroll-proportion="0.0" vertical-offset="30" max-vertical-offset="120">
               <caret line="2" column="5" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
               <folding />
             </state>
@@ -61,7 +85,7 @@
       <file leaf-file-name="ReplyCode.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/csci4311/chat/ReplyCode.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="345">
+            <state vertical-scroll-proportion="0.0" vertical-offset="120" max-vertical-offset="345">
               <caret line="8" column="9" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
               <folding />
             </state>
@@ -87,11 +111,11 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="65" />
-    <option name="y" value="-4" />
+    <option name="y" value="24" />
     <option name="width" value="1855" />
-    <option name="height" value="1084" />
+    <option name="height" value="1056" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
     <OptionsSetting value="true" id="Remove" />
     <OptionsSetting value="true" id="Checkout" />
@@ -117,6 +141,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -155,7 +180,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -170,7 +194,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dynamic.classpath" value="false" />
     <property name="restartRequiresConfirmation" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Prohoree_MultiConnection_Version/receiver/VtsDataReceiver" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunManager" selected="Application.Main">
     <configuration default="false" name="Main" type="Application" factoryName="Application" temporary="true">
@@ -422,6 +446,9 @@
     </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="0155d7bd-0b85-4d83-ad7d-fef1d76e0962" name="Default" comment="" />
@@ -429,29 +456,28 @@
       <option name="number" value="Default" />
       <updated>1446960040954</updated>
       <workItem from="1446960043768" duration="2765000" />
-      <workItem from="1446963483656" duration="16122000" />
+      <workItem from="1446963483656" duration="16390000" />
+      <workItem from="1447039654106" duration="828000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18887000" />
+    <option name="totallyTimeSpent" value="19983000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
+    <frame x="65" y="24" width="1855" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299595" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3299595" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3299595" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24959569" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -461,11 +487,13 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39979756" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39979756" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299595" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299595" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -496,6 +524,40 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/csci4311/chat/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="255">
+          <caret line="6" column="20" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/csci4311/chat/UserCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2865">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/443.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="30" max-vertical-offset="120">
+          <caret line="2" column="5" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/csci4311/chat/ReplyCode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="120" max-vertical-offset="345">
+          <caret line="8" column="9" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/csci4311/chat/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="165" max-vertical-offset="255">
@@ -548,8 +610,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/csci4311/chat/UserCommand.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.503937" vertical-offset="1990" max-vertical-offset="2865">
-          <caret line="154" column="47" selection-start-line="154" selection-start-column="47" selection-end-line="154" selection-end-column="47" />
+        <state vertical-scroll-proportion="0.503937" vertical-offset="1825" max-vertical-offset="2865">
+          <caret line="143" column="36" selection-start-line="143" selection-start-column="36" selection-end-line="143" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
