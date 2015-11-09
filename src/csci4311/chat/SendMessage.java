@@ -1,5 +1,10 @@
 package csci4311.chat;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.ServerSocket;
+import java.net.Socket;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
@@ -11,6 +16,13 @@ import java.util.regex.Pattern;
  */
 public class SendMessage {
 
+
+    private String sendMessage = null;
+    ServerSocket sSocket;
+    Socket socket;
+    BufferedReader br ;
+    PrintWriter write ;
+
     public SendMessage() {
 
         Scanner scanner;//= new Scanner(System.in);
@@ -21,9 +33,8 @@ public class SendMessage {
         String regEx;
         boolean isFromValid = false;
         boolean isToActivated = false;
-        String sendMessage = null;
         List<String> userList = new LinkedList();
-        List<String> groupList = new LinkedList();;
+        List<String> groupList = new LinkedList();
 
 
         while (true) {
@@ -41,6 +52,17 @@ public class SendMessage {
 //                    break;
                         if (sendMessage != null) {
                             System.out.println("Original text: " + sendMessage+" to: "+userList.get(0));
+
+                            //Sending message over socket ..................
+                            try {
+
+                                Thread reads = new Thread(new cread());
+                                reads.start();
+                            }
+                            catch(Exception ex){
+                                ex.printStackTrace();
+                            }
+
                             break;
                         } else {
                             System.out.println("Message not set. ");
@@ -85,5 +107,29 @@ public class SendMessage {
 
             }
         }
+    }
+
+    public class cread implements Runnable
+    {
+
+        public void run()
+        {
+            try
+            {
+                System.out.println("Try..");
+                sSocket = new ServerSocket(4311);
+                socket = sSocket.accept();
+                System.out.println("sendMessage="+sendMessage);
+
+//                br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                write = new PrintWriter(socket.getOutputStream());
+                write.write(sendMessage);
+                write.flush();
+            }
+            catch(Exception e){
+                e.printStackTrace();
+            }
+        }
+
     }
 }

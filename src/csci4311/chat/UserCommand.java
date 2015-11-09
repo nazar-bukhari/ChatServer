@@ -42,11 +42,14 @@ public class UserCommand {
         String fileName;
         File file;
         boolean isUserPresent = false;
+        int length;
 
         switch (secondKey) {
 
             case "join":
 
+                length = inputSet.length;
+                if (length == 4) {
 //                System.out.println("join command");
                 user = inputSet[2];
                 group = inputSet[3];
@@ -129,12 +132,13 @@ public class UserCommand {
                         e.printStackTrace();
                     }
                 }
+        }
 
                 break;
 
             case "leave":
 
-                int length = inputSet.length;
+                length = inputSet.length;
                 if (length == 4) {
 //                System.out.println("leave command");
                     user = inputSet[2];

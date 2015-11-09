@@ -49,7 +49,7 @@ public class Client extends Frame implements ActionListener
         });
         try
         {
-            socket=new Socket(InetAddress.getLocalHost(),6789);
+            socket=new Socket(InetAddress.getLocalHost(),4311);
             in=new BufferedReader(new InputStreamReader(socket.getInputStream()));
             out=new PrintWriter(socket.getOutputStream());
             Thread reads = new Thread(new sread());
