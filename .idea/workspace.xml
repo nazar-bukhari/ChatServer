@@ -2,24 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0155d7bd-0b85-4d83-ad7d-fef1d76e0962" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/csci4311/chat/Client.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/csci4311/chat/SendMessage.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/csci4311/chat/Server.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/442.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/443.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/nazar.txt" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChatServer/csci4311/chat/Main.class" afterPath="$PROJECT_DIR$/out/production/ChatServer/csci4311/chat/Main.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChatServer/csci4311/chat/ReplyCode.class" afterPath="$PROJECT_DIR$/out/production/ChatServer/csci4311/chat/ReplyCode.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChatServer/csci4311/chat/UserCommand.class" afterPath="$PROJECT_DIR$/out/production/ChatServer/csci4311/chat/UserCommand.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/csci4311/chat/Client.java" afterPath="$PROJECT_DIR$/src/csci4311/chat/Client.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/csci4311/chat/SendMessage.java" afterPath="$PROJECT_DIR$/src/csci4311/chat/SendMessage.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/csci4311/chat/Server.java" afterPath="$PROJECT_DIR$/src/csci4311/chat/Server.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/csci4311/chat/UserCommand.java" afterPath="$PROJECT_DIR$/src/csci4311/chat/UserCommand.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ChatServer.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -659,16 +647,23 @@
       <updated>1446960040954</updated>
       <workItem from="1446960043768" duration="2765000" />
       <workItem from="1446963483656" duration="16122000" />
-      <workItem from="1447040711536" duration="17420000" />
+      <workItem from="1447040711536" duration="18110000" />
     </task>
+    <task id="LOCAL-00001" summary="Message send functionality on progress">
+      <created>1447063089839</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1447063089839</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36307000" />
+    <option name="totallyTimeSpent" value="36997000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1855" height="1056" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -684,7 +679,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33906883" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23827493" sideWeight="0.66071427" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23827493" sideWeight="0.66071427" order="0" side_tool="false" content_ui="combo" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -716,6 +711,8 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
+    <MESSAGE value="Message send functionality on progress" />
+    <option name="LAST_COMMIT_MESSAGE" value="Message send functionality on progress" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

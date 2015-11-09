@@ -1,6 +1,8 @@
 package csci4311.chat;
 
 import java.io.*;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -14,6 +16,7 @@ public class UserCommand {
     public UserCommand() {
 
         BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
+
         try {
 
             String userInput = bufferRead.readLine();
@@ -44,12 +47,15 @@ public class UserCommand {
 
             case "join":
 
-                System.out.println("join command");
+//                System.out.println("join command");
                 user = inputSet[2];
                 group = inputSet[3];
                 file = new File(group + ".txt");
                 fileName = file.getName();
 
+                /**
+                 * Group Exists
+                 */
                 if (file.exists()) {
 
                     Scanner scanner = null;
@@ -80,7 +86,10 @@ public class UserCommand {
                         try {
                             ostream = new FileWriter(fileName, true);
                             BufferedWriter out = new BufferedWriter(ostream);
-                            out.write("\n");
+                            scanner = new Scanner(file);
+                            if (scanner.hasNext()) {
+                                out.write("\n");
+                            }
                             out.write(user);
                             out.flush();
                             out.close();
@@ -98,12 +107,17 @@ public class UserCommand {
                 else {
                     System.out.println(ReplyCode.OK.getReplyType());
                     try {
+                        /**
+                         * Writing users into individual group file
+                         */
                         FileWriter writer = new FileWriter(fileName);
                         writer.write(user);
                         writer.close();
 
+                        /**
+                         * Writing into Group file
+                         */
                         FileWriter groupWriter = new FileWriter("Group.txt", true);
-//                        BufferedWriter groupWriter = new BufferedWriter(ostream2);
                         Scanner scanner = new Scanner(new File("Group.txt"));
                         if (scanner.hasNext()) {
                             groupWriter.write("\n");
@@ -120,51 +134,85 @@ public class UserCommand {
 
             case "leave":
 
-                System.out.println("leave command");
-                user = inputSet[2];
-                group = inputSet[3];
-                file = new File(group + ".txt");
-                fileName = file.getName();
-                boolean isMember = true;
+                int length = inputSet.length;
+                if (length == 4) {
+//                System.out.println("leave command");
+                    user = inputSet[2];
+                    group = inputSet[3];
+                    file = new File(group + ".txt");
+                    fileName = file.getName();
+                    boolean isMember = true;
 
-                //Group exists
-                if (file.exists()) {
+                    //Group exists
+                    if (file.exists()) {
 
-                    Scanner scanner = null;
-                    try {
-                        scanner = new Scanner(file);
-                    } catch (FileNotFoundException e) {
-                        e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-                    }
-                    while (scanner.hasNextLine()) {
+                        Scanner scanner = null;
+                        BufferedReader br = null;
+                        FileWriter writer = null;
+                        List<String> userList = new LinkedList();
+                        try {
+                            scanner = new Scanner(file);
+                        } catch (FileNotFoundException e) {
+                            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+                        }
+                        while (scanner.hasNextLine()) {
 
-                        if (user.equals(scanner.nextLine().trim())) {
-                            // User is a member of the group
+                            if (user.equals(scanner.nextLine().trim())) {
+                                // User is a member of the group
 
-                            //Delete the user
-                            System.out.println(ReplyCode.OK.getReplyType());
-                            isMember = true;
-                            break;
-                        } else {
-                            isMember = false; //user is not memeber
+                                //Delete the user
+                                try {
+                                    br = new BufferedReader(new InputStreamReader(new FileInputStream(fileName)));
+
+                                    for (String line; (line = br.readLine()) != null; ) {
+                                        if (!line.equals(user)) {
+                                            userList.add(line);
+                                        }
+                                    }
+                                    new PrintWriter(fileName).close();
+                                    writer = new FileWriter(fileName);
+
+                                    for (String s : userList) {
+//                                    System.out.println("s="+s);
+                                        writer.write(s);
+                                        writer.write("\n");
+                                    }
+                                } catch (Exception ex) {
+                                    ex.printStackTrace();
+                                } finally {
+                                    try {
+                                        br.close();
+                                        writer.close();
+                                    } catch (Exception ex) {
+                                        ex.printStackTrace();
+                                    }
+                                }
+
+                                System.out.println(ReplyCode.OK.getReplyType());
+                                isMember = true;
+                                break;
+                            } else {
+                                isMember = false; //user is not memeber(201)
+                            }
+
                         }
 
-                    }
+                        if (isMember == false) {
+                            System.out.println(ReplyCode.NORESULT.getReplyType()); //User is not a member of the group(201)
 
-                    if (isMember == false) {
-                        System.out.println(ReplyCode.NORESULT.getReplyType()); //User is not a member of the group
-
+                        }
                     }
-                }
-                //Group not exists
-                else {
-                    System.out.println(ReplyCode.ERROR.getReplyType());
+                    //Group not exists
+                    else {
+                        System.out.println(ReplyCode.ERROR.getReplyType());
+                    }
                 }
 
                 break;
 
             case "groups":
-                System.out.println("groups command");
+
+//                System.out.println("groups command");
 
                 File groupFile = new File("Group.txt");
                 if (groupFile.exists()) {
@@ -194,8 +242,9 @@ public class UserCommand {
                 }
 
                 break;
+
             case "users":
-                System.out.println("users command");
+//                System.out.println("users command");
 
                 group = inputSet[2];
                 file = new File(group + ".txt");
@@ -229,8 +278,13 @@ public class UserCommand {
                 }
 
                 break;
+
             case "send":
+
                 System.out.println("send command");
+
+                new SendMessage();
+
                 break;
             case "history":
                 System.out.println("history command");

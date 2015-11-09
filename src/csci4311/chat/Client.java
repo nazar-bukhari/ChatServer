@@ -67,7 +67,8 @@ public class Client extends Frame implements ActionListener
         {
             try
             {
-                history.append("Client:"+msg.getText()+"\n");
+//                history.append("Client:"+msg.getText()+"\n");
+                System.out.println("Client:"+msg.getText()+"\n");
                 out.println(msg.getText());
                 out.flush();
                 msg.setText("");
@@ -94,7 +95,8 @@ public class Client extends Frame implements ActionListener
             {
                 while(((ms=in.readLine())!=null))
                 {
-                    history.append("Server: "+ms+"\n");
+//                    history.append("Server: "+ms+"\n");
+                    System.out.println("Server: "+ms+"\n");
                 }
 
             }
