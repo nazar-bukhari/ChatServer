@@ -6,7 +6,7 @@ import java.net.Socket;
 /**
  * Created by nazar on 11/9/15.
  */
-public class CLIUserAgent {
+public class CLIUserAgent2 {
 
 //    The csci4311.chat.CLIUserAgent class must only implement user interaction, and no
 //            protocol details.
@@ -34,7 +34,7 @@ public class CLIUserAgent {
             while(true)
             {
                 sendMessage = keyRead.readLine();  // keyboard reading
-                pwrite.println(sendMessage+" "+userName);       // sending to server
+                pwrite.println(sendMessage);       // sending to server
                 pwrite.flush();                    // flush the data
                 if((receiveMessage = receiveRead.readLine()) != null) //receive from server
                 {
