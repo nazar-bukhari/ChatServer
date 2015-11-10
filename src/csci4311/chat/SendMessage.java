@@ -117,12 +117,14 @@ public class SendMessage {
             try
             {
                 System.out.println("Try..");
-                sSocket = new ServerSocket(4311);
+                sSocket = new ServerSocket(1025);
                 socket = sSocket.accept();
                 System.out.println("sendMessage="+sendMessage);
 
 //                br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-                write = new PrintWriter(socket.getOutputStream());
+                write = new PrintWriter(socket.getOutputStream(),true);
+                BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                System.out.println(br.readLine());
                 write.write(sendMessage);
                 write.flush();
             }

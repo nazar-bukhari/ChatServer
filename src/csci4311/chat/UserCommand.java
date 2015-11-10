@@ -8,30 +8,58 @@ import java.util.Scanner;
 /**
  * Created by nazar on 11/8/15.
  */
-public class UserCommand {
+public class UserCommand  extends Thread{
 
     private final String firstKey = "msgp";
 
 
-    public UserCommand() {
+    public UserCommand(){
 
-        BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
+//        while (true){
+//            BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
+//
+//        try {
+//
+//            String userInput = bufferRead.readLine();
+//            if (userInput != null) {
+//                String[] inputSet = userInput.split(" ");
+//
+//                if (inputSet[0].equals(firstKey)) {
+//                    verifySecondKey(inputSet, inputSet[1]);
+//                } else {
+//                    System.out.println(ReplyCode.NORESULT.getReplyType());
+//                }
+//            }
+//
+//        } catch (IOException e) {
+////            e.printStackTrace();
+//        }
+//    }
 
-        try {
+    }
 
-            String userInput = bufferRead.readLine();
-            if (userInput != null) {
-                String[] inputSet = userInput.split(" ");
+    @Override
+    public void run() {
 
-                if (inputSet[0].equals(firstKey)) {
-                    verifySecondKey(inputSet, inputSet[1]);
-                } else {
-                    System.out.println(ReplyCode.NORESULT.getReplyType());
+        while (true){
+            BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
+
+            try {
+
+                String userInput = bufferRead.readLine();
+                if (userInput != null) {
+                    String[] inputSet = userInput.split(" ");
+
+                    if (inputSet[0].equals(firstKey)) {
+                        verifySecondKey(inputSet, inputSet[1]);
+                    } else {
+                        System.out.println(ReplyCode.NORESULT.getReplyType());
+                    }
                 }
-            }
 
-        } catch (IOException e) {
+            } catch (IOException e) {
 //            e.printStackTrace();
+            }
         }
     }
 
@@ -287,7 +315,7 @@ public class UserCommand {
 
                 System.out.println("send command");
 
-                new SendMessage();
+//                new SendMessage();
 
                 break;
             case "history":
