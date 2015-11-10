@@ -15,27 +15,6 @@ public class UserCommand  extends Thread{
 
     public UserCommand(){
 
-//        while (true){
-//            BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
-//
-//        try {
-//
-//            String userInput = bufferRead.readLine();
-//            if (userInput != null) {
-//                String[] inputSet = userInput.split(" ");
-//
-//                if (inputSet[0].equals(firstKey)) {
-//                    verifySecondKey(inputSet, inputSet[1]);
-//                } else {
-//                    System.out.println(ReplyCode.NORESULT.getReplyType());
-//                }
-//            }
-//
-//        } catch (IOException e) {
-////            e.printStackTrace();
-//        }
-//    }
-
     }
 
     @Override
