@@ -21,6 +21,9 @@ public class CLIUserAgent2 {
 
         try {
             Socket socket = new Socket(server, port);
+
+            new ClientReceiver(socket).start();
+
             BufferedReader keyRead = new BufferedReader(new InputStreamReader(System.in));
             OutputStream ostream = socket.getOutputStream();
             PrintWriter pwrite = new PrintWriter(ostream, true);
@@ -34,7 +37,7 @@ public class CLIUserAgent2 {
             while(true)
             {
                 sendMessage = keyRead.readLine();  // keyboard reading
-                pwrite.println(sendMessage);       // sending to server
+                pwrite.println(sendMessage+" "+userName);       // sending to server
                 pwrite.flush();                    // flush the data
                 if((receiveMessage = receiveRead.readLine()) != null) //receive from server
                 {

@@ -12,32 +12,33 @@ public class PacketReceiver extends Thread{
 
     int port;
     public static volatile int readerCount;
+    List<Socket> sockets ;
 
     public PacketReceiver(int port){
 
         this.port = port;
         readerCount = 0;
+
+        if(sockets == null){
+           sockets = new CopyOnWriteArrayList<Socket>();
+            System.out.println("New socket...................");
+        }
     }
 
     @Override
     public void run() {
 
         ServerSocket sSock = null;
-        final List<Socket> sockets = new CopyOnWriteArrayList<Socket>();
 
         try {
 
             sSock = new ServerSocket(port);
-//            sockets.add(sSock.accept());
-
-//            for (Socket s : sockets)  {
-//                System.out.println(s);
-//            }
 
             while(true){
+
                 try{
 
-                    PacketReader pr = new PacketReader();
+                    PacketReader pr = new PacketReader(sockets);
                     pr.socket  = sSock.accept(); // Connection block here,until another hardware comes to connect.Upto then,it executes the calling function.
                     readerCount++;
                     System.out.println("Total connected device: " + readerCount);
@@ -51,7 +52,7 @@ public class PacketReceiver extends Thread{
             }
         }
         catch(Exception ex){
-
+            ex.printStackTrace();
         }
 
     }

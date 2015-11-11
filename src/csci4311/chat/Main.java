@@ -15,7 +15,7 @@ public class Main extends Thread {
         m.start();
 
         try {
-            PacketReceiver pr = new PacketReceiver(3000);
+            PacketReceiver pr = new PacketReceiver(3001);
             pr.start();
         }
         catch(Exception ex){

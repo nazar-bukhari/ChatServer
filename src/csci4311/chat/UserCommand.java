@@ -8,19 +8,19 @@ import java.util.Scanner;
 /**
  * Created by nazar on 11/8/15.
  */
-public class UserCommand  extends Thread{
+public class UserCommand extends Thread {
 
     private final String firstKey = "msgp";
 
 
-    public UserCommand(){
+    public UserCommand() {
 
     }
 
     @Override
     public void run() {
 
-        while (true){
+        while (true) {
             BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
 
             try {
@@ -58,88 +58,88 @@ public class UserCommand  extends Thread{
                 length = inputSet.length;
                 if (length == 4) {
 //                System.out.println("join command");
-                user = inputSet[2];
-                group = inputSet[3];
-                file = new File(group + ".txt");
-                fileName = file.getName();
+                    user = inputSet[2];
+                    group = inputSet[3];
+                    file = new File(group + ".txt");
+                    fileName = file.getName();
 
-                /**
-                 * Group Exists
-                 */
-                if (file.exists()) {
+                    /**
+                     * Group Exists
+                     */
+                    if (file.exists()) {
 
-                    Scanner scanner = null;
-                    try {
-                        scanner = new Scanner(file);
-                    } catch (FileNotFoundException e) {
-                        e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-                    }
-                    while (scanner.hasNextLine()) {
-                        /**
-                         * User Already Member
-                         */
-                        if (user.equals(scanner.nextLine().trim())) {
-                            // same user found
-                            System.out.println(ReplyCode.NORESULT.getReplyType());
-                            isUserPresent = true;
-                            break;
-                        } else {
-
-                        }
-
-                    }
-
-                    if (isUserPresent == false) {
-
-                        System.out.println(ReplyCode.OK.getReplyType());
-                        FileWriter ostream = null;
+                        Scanner scanner = null;
                         try {
-                            ostream = new FileWriter(fileName, true);
-                            BufferedWriter out = new BufferedWriter(ostream);
                             scanner = new Scanner(file);
-                            if (scanner.hasNext()) {
-                                out.write("\n");
-                            }
-                            out.write(user);
-                            out.flush();
-                            out.close();
-
-                        } catch (IOException e) {
+                        } catch (FileNotFoundException e) {
                             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
                         }
+                        while (scanner.hasNextLine()) {
+                            /**
+                             * User Already Member
+                             */
+                            if (user.equals(scanner.nextLine().trim())) {
+                                // same user found
+                                System.out.println(ReplyCode.NORESULT.getReplyType());
+                                isUserPresent = true;
+                                break;
+                            } else {
 
-                    }
+                            }
 
-                }
-                /**
-                 * Group does not exist
-                 */
-                else {
-                    System.out.println(ReplyCode.OK.getReplyType());
-                    try {
-                        /**
-                         * Writing users into individual group file
-                         */
-                        FileWriter writer = new FileWriter(fileName);
-                        writer.write(user);
-                        writer.close();
-
-                        /**
-                         * Writing into Group file
-                         */
-                        FileWriter groupWriter = new FileWriter("Group.txt", true);
-                        Scanner scanner = new Scanner(new File("Group.txt"));
-                        if (scanner.hasNext()) {
-                            groupWriter.write("\n");
                         }
-                        groupWriter.write(group);
-                        groupWriter.flush();
-                        groupWriter.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
+
+                        if (isUserPresent == false) {
+
+                            System.out.println(ReplyCode.OK.getReplyType());
+                            FileWriter ostream = null;
+                            try {
+                                ostream = new FileWriter(fileName, true);
+                                BufferedWriter out = new BufferedWriter(ostream);
+                                scanner = new Scanner(file);
+                                if (scanner.hasNext()) {
+                                    out.write("\n");
+                                }
+                                out.write(user);
+                                out.flush();
+                                out.close();
+
+                            } catch (IOException e) {
+                                e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+                            }
+
+                        }
+
+                    }
+                    /**
+                     * Group does not exist
+                     */
+                    else {
+                        System.out.println(ReplyCode.OK.getReplyType());
+                        try {
+                            /**
+                             * Writing users into individual group file
+                             */
+                            FileWriter writer = new FileWriter(fileName);
+                            writer.write(user);
+                            writer.close();
+
+                            /**
+                             * Writing into Group file
+                             */
+                            FileWriter groupWriter = new FileWriter("Group.txt", true);
+                            Scanner scanner = new Scanner(new File("Group.txt"));
+                            if (scanner.hasNext()) {
+                                groupWriter.write("\n");
+                            }
+                            groupWriter.write(group);
+                            groupWriter.flush();
+                            groupWriter.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
-        }
 
                 break;
 
@@ -256,35 +256,37 @@ public class UserCommand  extends Thread{
 
             case "users":
 //                System.out.println("users command");
+                length = inputSet.length;
+                if (length == 3) {
+                    group = inputSet[2];
+                    file = new File(group + ".txt");
+                    fileName = file.getName();
 
-                group = inputSet[2];
-                file = new File(group + ".txt");
-                fileName = file.getName();
+                    //Group exists
+                    if (file.exists()) {
 
-                //Group exists
-                if (file.exists()) {
+                        try {
 
-                    try {
-
-                        BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(fileName)));
-                        String line = null;
-                        //Checking null group
-                        if (br.readLine() != null) {
-                            System.out.println(ReplyCode.OK.getReplyType());
+                            BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(fileName)));
+                            String line = null;
+                            //Checking null group
+                            if (br.readLine() != null) {
+                                System.out.println(ReplyCode.OK.getReplyType());
 //                        System.out.println("br "+br.readLine());
-                            br = new BufferedReader(new InputStreamReader(new FileInputStream(fileName)));
-                            while ((line = br.readLine()) != null) {
-                                System.out.println(line);
+                                br = new BufferedReader(new InputStreamReader(new FileInputStream(fileName)));
+                                while ((line = br.readLine()) != null) {
+                                    System.out.println(line);
+                                }
+                                br.close();
+                            } else {
+                                System.out.println(ReplyCode.NORESULT.getReplyType()); //User is not a member of the group
                             }
-                            br.close();
-                        } else {
-                            System.out.println(ReplyCode.NORESULT.getReplyType()); //User is not a member of the group
+                        } catch (Exception ex) {
+                            ex.printStackTrace();
                         }
-                    } catch (Exception ex) {
-                        ex.printStackTrace();
+                    } else {
+                        System.out.println(ReplyCode.NORESULT.getReplyType()); //No such group
                     }
-                } else {
-                    System.out.println(ReplyCode.NORESULT.getReplyType()); //No such group
                 }
 
                 break;

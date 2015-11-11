@@ -2,6 +2,7 @@ package csci4311.chat;
 
 import java.io.*;
 import java.net.Socket;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -13,6 +14,13 @@ public class PacketReader extends Thread {
 
     public Socket socket;
     private boolean isRunning;
+//    List<Socket> sockets = new CopyOnWriteArrayList<Socket>();
+    List<Socket> sockets ;
+
+    public PacketReader( List<Socket> sockets){
+
+        this.sockets = sockets;
+    }
 
     @Override
     public void run() {
@@ -22,6 +30,10 @@ public class PacketReader extends Thread {
         isRunning = true;
         String packetStr;
 
+        if(!sockets.contains(socket)) {
+            sockets.add(socket);
+        }
+        System.out.println("size="+sockets.size());
 
         try {
 
@@ -30,13 +42,17 @@ public class PacketReader extends Thread {
             isr = new InputStreamReader(is);
             br = new BufferedReader(isr);
 
+//            System.out.println(br.readLine() +" from : "+socket);
+
+
             while (!socket.isClosed() && isRunning) {
 
                 try {
 
                     packetStr = br.readLine();
                     if (packetStr != null) {
-                        System.out.println(packetStr);
+
+                        System.out.println(packetStr +" from : "+socket);
 
                         if(packetStr != null){
 
@@ -47,20 +63,24 @@ public class PacketReader extends Thread {
 
 //                        Thread.sleep(3000);
 //                        for (Socket s : sockets)  {
-//                            System.out.println(s);
+////                            System.out.println("s="+s);
 //                            try {
 //                                OutputStream ostream = s.getOutputStream();
 //                                PrintWriter pwrite = new PrintWriter(ostream, true);
 //                                pwrite.println("Server Response");
-//                            } catch (IOException ioe) {
+//                                pwrite.flush();
+//                                System.out.println("Sending response at : "+s);
+//
+//                            } catch (Exception ex) {
 //                                // handle exception, close the socket.
-//                                sockets.remove(s);
+////                                sockets.remove(s);
+//                                ex.printStackTrace();
 //                            }
 //                    }
                     }
 
                 } catch (Exception ex) {
-
+                    ex.printStackTrace();
                 }
 
             }
@@ -73,8 +93,6 @@ public class PacketReader extends Thread {
     public void response(String baseCommand,String[] packet) {
 
         try {
-            OutputStream ostream = socket.getOutputStream();
-            PrintWriter pwrite = new PrintWriter(ostream, true);
 
             switch(baseCommand){
 
@@ -147,9 +165,12 @@ public class PacketReader extends Thread {
                                    out.write(user);
                                    out.flush();
                                    out.close();
-
-                                   pwrite.println("joined #"+group+" with "+counter+" current members");
-                                   pwrite.flush();
+                                   for (Socket  socket: sockets) {
+                                       OutputStream ostream = socket.getOutputStream();
+                                       PrintWriter pwrite = new PrintWriter(ostream, true);
+                                       pwrite.println("joined #" + group + " with " + counter + " current members");
+                                       pwrite.flush();
+                                   }
 
                                } catch (IOException e) {
                                    e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
