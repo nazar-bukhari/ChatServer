@@ -16,6 +16,7 @@ public class PacketReader extends Thread {
     private boolean isRunning;
 //    List<Socket> sockets = new CopyOnWriteArrayList<Socket>();
     List<Socket> sockets ;
+    int length;
 
     public PacketReader( List<Socket> sockets){
 
@@ -30,10 +31,11 @@ public class PacketReader extends Thread {
         isRunning = true;
         String packetStr;
 
+
         if(!sockets.contains(socket)) {
             sockets.add(socket);
         }
-        System.out.println("size="+sockets.size());
+//        System.out.println("size="+sockets.size());
 
         try {
 
@@ -50,6 +52,8 @@ public class PacketReader extends Thread {
                 try {
 
                     packetStr = br.readLine();
+//                    System.out.println(packetStr+"(b4 null check) " +" from : "+socket);
+
                     if (packetStr != null) {
 
                         System.out.println(packetStr +" from : "+socket);
@@ -98,12 +102,12 @@ public class PacketReader extends Thread {
 
                case "join":
 
-                   if(packet[1] != null){
+                   if(packet[1] != null) {
 
                        String group = packet[1];
                        File file = new File(group + ".txt");
                        int counter = 0;
-                       if(file.exists()){
+                       if (file.exists()) {
 
                            try {
 
@@ -113,10 +117,10 @@ public class PacketReader extends Thread {
 
                                    System.out.println(ReplyCode.OK.getReplyType());
                                    br = new BufferedReader(new InputStreamReader(new FileInputStream(file.getName())));
-                                   while (( br.readLine()) != null) {
+                                   while ((br.readLine()) != null) {
                                        counter++;
                                    }
-                                   System.out.println("counter="+counter);
+//                                   System.out.println("counter=" + counter);
                                    br.close();
                                } else {
                                    System.out.println(ReplyCode.NORESULT.getReplyType()); //User is not a member of the group
@@ -124,8 +128,8 @@ public class PacketReader extends Thread {
                            } catch (Exception ex) {
                                ex.printStackTrace();
                            }
-                       }
-                       if(packet[2] != null){
+
+                       if (packet[2] != null) {
 
                            String user = packet[2];
                            boolean isUserPresent = false;
@@ -165,7 +169,7 @@ public class PacketReader extends Thread {
                                    out.write(user);
                                    out.flush();
                                    out.close();
-                                   for (Socket  socket: sockets) {
+                                   for (Socket socket : sockets) {
                                        OutputStream ostream = socket.getOutputStream();
                                        PrintWriter pwrite = new PrintWriter(ostream, true);
                                        pwrite.println("joined #" + group + " with " + counter + " current members");
@@ -180,11 +184,51 @@ public class PacketReader extends Thread {
 
                        }
                    }
+                   }
                    break;
 
                case "leave" :
                    break;
                 case "groups" :
+
+                    length = packet.length;
+                    String groupname;
+                    BufferedReader br = null;
+                    BufferedReader individualGroupbr;
+//                    if(length == 1){
+//                        groups
+//                        #4311 has 12 members
+
+                        try {
+
+
+                            String groupValue;
+
+                            br = new BufferedReader(new FileReader("Group.txt"));
+
+                            while ((groupValue = br.readLine()) != null) {
+
+                                groupname = groupValue + ".txt";
+                                individualGroupbr = new BufferedReader(new FileReader(groupname));
+
+                                int counter = 0;
+                                while(individualGroupbr.readLine()!=null){
+                                    counter++;
+                                }
+//                                System.out.println("#"+groupValue +" has "+counter+" members");
+
+                                OutputStream ostream = socket.getOutputStream();
+                                PrintWriter pwrite = new PrintWriter(ostream, true);
+                                pwrite.println("#"+groupValue +" has "+counter+" members");
+                                pwrite.flush();
+                            }
+
+                        } catch (Exception ex) {
+                            ex.printStackTrace();
+                        }
+
+//                    }
+
                     break;
                 case "users" :
                     break;

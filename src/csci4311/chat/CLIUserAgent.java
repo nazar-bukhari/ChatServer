@@ -21,26 +21,10 @@ public class CLIUserAgent {
 
         try {
             Socket socket = new Socket(server, port);
-            BufferedReader keyRead = new BufferedReader(new InputStreamReader(System.in));
-            OutputStream ostream = socket.getOutputStream();
-            PrintWriter pwrite = new PrintWriter(ostream, true);
 
-            InputStream istream = socket.getInputStream();
-            BufferedReader receiveRead = new BufferedReader(new InputStreamReader(istream));
+            new ClientReceiver(socket).start();
+            new ClientSender(socket,userName).start();
 
-            System.out.println("type and press Enter key");
-
-            String receiveMessage, sendMessage;
-            while(true)
-            {
-                sendMessage = keyRead.readLine();  // keyboard reading
-                pwrite.println(sendMessage+" "+userName);       // sending to server
-                pwrite.flush();                    // flush the data
-                if((receiveMessage = receiveRead.readLine()) != null) //receive from server
-                {
-                    System.out.println(receiveMessage); // displaying at DOS prompt
-                }
-            }
         }
         catch(Exception ex){
             ex.printStackTrace();

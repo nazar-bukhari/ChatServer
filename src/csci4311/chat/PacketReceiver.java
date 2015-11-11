@@ -21,7 +21,7 @@ public class PacketReceiver extends Thread{
 
         if(sockets == null){
            sockets = new CopyOnWriteArrayList<Socket>();
-            System.out.println("New socket...................");
+//            System.out.println("New socket...................");
         }
     }
 
