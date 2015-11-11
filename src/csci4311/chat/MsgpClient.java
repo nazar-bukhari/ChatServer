@@ -11,4 +11,10 @@ public interface MsgpClient {
     //Protocol
 
 
+    public boolean isValidJoinProtocol();
+    public boolean isValidLeaveProtocol();
+    public boolean isValidGroupsProtocol();
+    public boolean isValidUsersProtocol();
+    public boolean isValidHistoryProtocol();
+    public boolean isValidSendProtocol();
 }

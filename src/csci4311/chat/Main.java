@@ -2,7 +2,6 @@ package csci4311.chat;
 
 public class Main extends Thread {
 
-
     public void run() {
 
         new UserCommand().run();
