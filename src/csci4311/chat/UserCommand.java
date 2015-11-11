@@ -1,6 +1,7 @@
 package csci4311.chat;
 
 import java.io.*;
+import java.net.Socket;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
@@ -147,76 +148,10 @@ public class UserCommand extends Thread {
 
                 length = inputSet.length;
                 if (length == 4) {
-//                System.out.println("leave command");
+
                     user = inputSet[2];
                     group = inputSet[3];
-                    file = new File(group + ".txt");
-                    fileName = file.getName();
-                    boolean isMember = true;
-
-                    //Group exists
-                    if (file.exists()) {
-
-                        Scanner scanner = null;
-                        BufferedReader br = null;
-                        FileWriter writer = null;
-                        List<String> userList = new LinkedList();
-                        try {
-                            scanner = new Scanner(file);
-                        } catch (FileNotFoundException e) {
-                            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-                        }
-                        while (scanner.hasNextLine()) {
-
-                            if (user.equals(scanner.nextLine().trim())) {
-                                // User is a member of the group
-
-                                //Delete the user
-                                try {
-                                    br = new BufferedReader(new InputStreamReader(new FileInputStream(fileName)));
-
-                                    for (String line; (line = br.readLine()) != null; ) {
-                                        if (!line.equals(user)) {
-                                            userList.add(line);
-                                        }
-                                    }
-                                    new PrintWriter(fileName).close();
-                                    writer = new FileWriter(fileName);
-
-                                    for (String s : userList) {
-//                                    System.out.println("s="+s);
-                                        writer.write(s);
-                                        writer.write("\n");
-                                    }
-                                } catch (Exception ex) {
-                                    ex.printStackTrace();
-                                } finally {
-                                    try {
-                                        br.close();
-                                        writer.close();
-                                    } catch (Exception ex) {
-                                        ex.printStackTrace();
-                                    }
-                                }
-
-                                System.out.println(ReplyCode.OK.getReplyType());
-                                isMember = true;
-                                break;
-                            } else {
-                                isMember = false; //user is not memeber(201)
-                            }
-
-                        }
-
-                        if (isMember == false) {
-                            System.out.println(ReplyCode.NORESULT.getReplyType()); //User is not a member of the group(201)
-
-                        }
-                    }
-                    //Group not exists
-                    else {
-                        System.out.println(ReplyCode.ERROR.getReplyType());
-                    }
+                    leaveGroup(user, group,null,false);
                 }
 
                 break;
@@ -255,38 +190,12 @@ public class UserCommand extends Thread {
                 break;
 
             case "users":
-//                System.out.println("users command");
+
                 length = inputSet.length;
                 if (length == 3) {
+
                     group = inputSet[2];
-                    file = new File(group + ".txt");
-                    fileName = file.getName();
-
-                    //Group exists
-                    if (file.exists()) {
-
-                        try {
-
-                            BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(fileName)));
-                            String line = null;
-                            //Checking null group
-                            if (br.readLine() != null) {
-                                System.out.println(ReplyCode.OK.getReplyType());
-//                        System.out.println("br "+br.readLine());
-                                br = new BufferedReader(new InputStreamReader(new FileInputStream(fileName)));
-                                while ((line = br.readLine()) != null) {
-                                    System.out.println(line);
-                                }
-                                br.close();
-                            } else {
-                                System.out.println(ReplyCode.NORESULT.getReplyType()); //User is not a member of the group
-                            }
-                        } catch (Exception ex) {
-                            ex.printStackTrace();
-                        }
-                    } else {
-                        System.out.println(ReplyCode.NORESULT.getReplyType()); //No such group
-                    }
+                    usersCommand(group,null,false);
                 }
 
                 break;
@@ -304,6 +213,150 @@ public class UserCommand extends Thread {
             default:
                 System.out.println("Comamnd not found");
 
+        }
+
+    }
+
+    public void usersCommand(String group,Socket socket,boolean clientCommand){
+
+        File file = new File(group + ".txt");
+        String fileName = file.getName();
+
+        //Group exists
+        if (file.exists()) {
+
+            try {
+
+                BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(fileName)));
+                String line = null;
+                //Checking null group
+                if (br.readLine() != null) {
+                    System.out.println(ReplyCode.OK.getReplyType());
+//                        System.out.println("br "+br.readLine());
+                    br = new BufferedReader(new InputStreamReader(new FileInputStream(fileName)));
+                    while ((line = br.readLine()) != null) {
+                        if(clientCommand){
+                             displayInClientWindow("@"+line,socket);
+                        }
+                        else{
+                            System.out.println(line);      //Displaying users name in server prompt
+                        }
+                    }
+                    br.close();
+                } else {
+                    System.out.println(ReplyCode.NORESULT.getReplyType()); //User is not a member of the group
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        } else {
+
+            if(clientCommand){
+
+                displayInClientWindow(ReplyCode.ERROR.getReplyType(),socket);
+            }
+            else{
+                System.out.println(ReplyCode.NORESULT.getReplyType()); //No such group
+            }
+        }
+
+    }
+
+    public void displayInClientWindow(String message,Socket socket){
+
+        try{
+            OutputStream ostream = socket.getOutputStream();
+            PrintWriter pwrite = new PrintWriter(ostream, true);
+            pwrite.println(message);
+            pwrite.flush();
+        }
+        catch(Exception ex){
+
+        }
+    }
+
+    public void leaveGroup(String user, String group,Socket socket,boolean clientCommand) {
+
+        File file = new File(group + ".txt");
+        String fileName = file.getName();
+        boolean isMember = true;
+
+        //Group exists
+        if (file.exists()) {
+
+            Scanner scanner = null;
+            BufferedReader br = null;
+            FileWriter writer = null;
+            List<String> userList = new LinkedList();
+            try {
+                scanner = new Scanner(file);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            }
+            while (scanner.hasNextLine()) {
+
+                if (user.equals(scanner.nextLine().trim())) {
+                    // User is a member of the group
+
+                    //Delete the user
+                    try {
+                        br = new BufferedReader(new InputStreamReader(new FileInputStream(fileName)));
+
+                        for (String line; (line = br.readLine()) != null; ) {
+                            if (!line.equals(user)) {
+                                userList.add(line);
+                            }
+                        }
+                        new PrintWriter(fileName).close();
+                        writer = new FileWriter(fileName);
+
+                        for (String s : userList) {
+//                                    System.out.println("s="+s);
+                            writer.write(s);
+                            writer.write("\n");
+                        }
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    } finally {
+                        try {
+                            br.close();
+                            writer.close();
+                        } catch (Exception ex) {
+                            ex.printStackTrace();
+                        }
+                    }
+
+                    System.out.println(ReplyCode.OK.getReplyType());
+                    isMember = true;
+                    break;
+                } else {
+                    isMember = false; //user is not memeber(201)
+                }
+
+            }
+
+            if (isMember == false) {
+
+                if(clientCommand){
+                    try{
+                    OutputStream ostream = socket.getOutputStream();
+                    PrintWriter pwrite = new PrintWriter(ostream, true);
+                    pwrite.println("Not a member of #" + group);
+                    pwrite.flush();
+                    }
+                    catch(Exception ex){
+
+                    }
+                }
+                else{
+                    System.out.println(ReplyCode.NORESULT.getReplyType()); //User is not a member of the group(201)
+                }
+
+            }
+        }
+        //Group not exists
+        else {
+            System.out.println(ReplyCode.ERROR.getReplyType());
         }
     }
 }

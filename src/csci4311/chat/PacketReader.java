@@ -52,7 +52,6 @@ public class PacketReader extends Thread {
                 try {
 
                     packetStr = br.readLine();
-//                    System.out.println(packetStr+"(b4 null check) " +" from : "+socket);
 
                     if (packetStr != null) {
 
@@ -64,27 +63,10 @@ public class PacketReader extends Thread {
                             String baseCommand = clientRequest[0];
                             response(baseCommand,clientRequest);
                         }
-
-//                        Thread.sleep(3000);
-//                        for (Socket s : sockets)  {
-////                            System.out.println("s="+s);
-//                            try {
-//                                OutputStream ostream = s.getOutputStream();
-//                                PrintWriter pwrite = new PrintWriter(ostream, true);
-//                                pwrite.println("Server Response");
-//                                pwrite.flush();
-//                                System.out.println("Sending response at : "+s);
-//
-//                            } catch (Exception ex) {
-//                                // handle exception, close the socket.
-////                                sockets.remove(s);
-//                                ex.printStackTrace();
-//                            }
-//                    }
                     }
 
                 } catch (Exception ex) {
-                    ex.printStackTrace();
+//                    ex.printStackTrace();
                 }
 
             }
@@ -96,6 +78,8 @@ public class PacketReader extends Thread {
 
     public void response(String baseCommand,String[] packet) {
 
+        String group;
+
         try {
 
             switch(baseCommand){
@@ -104,7 +88,7 @@ public class PacketReader extends Thread {
 
                    if(packet[1] != null) {
 
-                       String group = packet[1];
+                       group = packet[1];
                        File file = new File(group + ".txt");
                        int counter = 0;
                        if (file.exists()) {
@@ -169,12 +153,12 @@ public class PacketReader extends Thread {
                                    out.write(user);
                                    out.flush();
                                    out.close();
-                                   for (Socket socket : sockets) {
+//                                   for (Socket socket : sockets) {
                                        OutputStream ostream = socket.getOutputStream();
                                        PrintWriter pwrite = new PrintWriter(ostream, true);
                                        pwrite.println("joined #" + group + " with " + counter + " current members");
                                        pwrite.flush();
-                                   }
+//                                   }
 
                                } catch (IOException e) {
                                    e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
@@ -188,6 +172,11 @@ public class PacketReader extends Thread {
                    break;
 
                case "leave" :
+
+                   group = packet[1];
+                   String user = packet[2];
+                   new UserCommand().leaveGroup(user,group,socket,true);
+
                    break;
                 case "groups" :
 
@@ -231,10 +220,17 @@ public class PacketReader extends Thread {
 
                     break;
                 case "users" :
+
+                    group = packet[1];
+                    new UserCommand().usersCommand(group,socket,true);
+
                     break;
                 case "history" :
                     break;
                 case "send" :
+
+
+
                     break;
                 default:
 

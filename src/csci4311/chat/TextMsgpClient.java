@@ -50,30 +50,31 @@ public class TextMsgpClient implements  MsgpClient{
     @Override
     public boolean isValidJoinProtocol(String clientMessage) {
 
-        regEx = "join [A-Za-z0-9]{1,25}"; //from:XXXXX
-        p = Pattern.compile(regEx);
-        m = p.matcher(clientMessage);
-
-        if (m.matches()) {
-            return true;
-        }else {
-            return false;
-        }
+        regEx = "join [A-Za-z0-9]{1,25}";
+        return patternMatch(regEx);
     }
 
     @Override
     public boolean isValidLeaveProtocol(String clientMessage) {
-        return false;
+
+        regEx = "leave [A-Za-z0-9]{1,25}";
+        return patternMatch(regEx);
     }
 
     @Override
     public boolean isValidGroupsProtocol(String clientMessage) {
-        return false;
+
+
+        regEx = "groups";
+        return patternMatch(regEx);
     }
 
     @Override
     public boolean isValidUsersProtocol(String clientMessage) {
-        return false;
+
+        regEx = "users [A-Za-z0-9]{1,25}";
+        return patternMatch(regEx);
+
     }
 
     @Override
@@ -83,6 +84,20 @@ public class TextMsgpClient implements  MsgpClient{
 
     @Override
     public boolean isValidSendProtocol(String clientMessage) {
-        return false;
+
+        regEx = "send (@|#)[A-Za-z0-9]{1,50}";
+        return patternMatch(regEx);
+    }
+
+    public boolean patternMatch(String regEx){
+
+        p = Pattern.compile(regEx);
+        m = p.matcher(clientMessage);
+
+        if (m.matches()) {
+            return true;
+        }else {
+            return false;
+        }
     }
 }
