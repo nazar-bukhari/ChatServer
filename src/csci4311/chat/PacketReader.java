@@ -5,7 +5,6 @@ import java.net.Socket;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -16,7 +15,6 @@ public class PacketReader extends Thread {
 
     public Socket socket;
     private boolean isRunning;
-    //    List<Socket> sockets = new CopyOnWriteArrayList<Socket>();
     List<Socket> sockets;
     int length;
 
@@ -45,9 +43,6 @@ public class PacketReader extends Thread {
 
             isr = new InputStreamReader(is);
             br = new BufferedReader(isr);
-
-//            System.out.println(br.readLine() +" from : "+socket);
-
 
             while (!socket.isClosed() && isRunning) {
 
@@ -151,6 +146,7 @@ public class PacketReader extends Thread {
                                     System.out.println(ReplyCode.OK.getReplyType());
                                     fWriter = null;
                                     try {
+                                        //Writing into file
                                         fWriter = new FileWriter(file.getName(), true);
                                         BufferedWriter out = new BufferedWriter(fWriter);
                                         scanner = new Scanner(file);
@@ -160,12 +156,13 @@ public class PacketReader extends Thread {
                                         out.write(user);
                                         out.flush();
                                         out.close();
-//                                   for (Socket socket : sockets) {
+
+                                        //Sending back confirmation message to client over socket
                                         ostream = socket.getOutputStream();
                                         pwrite = new PrintWriter(ostream, true);
                                         pwrite.println("joined #" + group + " with " + counter + " current members");
                                         pwrite.flush();
-//                                   }
+
 
                                     } catch (IOException e) {
                                         e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
@@ -189,11 +186,7 @@ public class PacketReader extends Thread {
 
                     length = packet.length;
                     String groupname;
-//                    BufferedReader br = null;
                     BufferedReader individualGroupbr;
-//                    if(length == 1){
-//                        groups
-//                        #4311 has 12 members
 
                     try {
 
@@ -223,16 +216,15 @@ public class PacketReader extends Thread {
                         ex.printStackTrace();
                     }
 
-//                    }
-
                     break;
+
                 case "users":
 
                     group = packet[1];
                     new UserCommand().usersCommand(group, socket, true);
 
-
                     break;
+
                 case "history":
                     break;
                 case "send":
@@ -246,9 +238,11 @@ public class PacketReader extends Thread {
                     List<String> userList = null;
                     String originalMessage = null;
                     String[] splitedMessage = new String[0];
+                    boolean isGroupMessage = false;
 
                     while (m.find()) {
 
+                        isGroupMessage = true;
                         file = new File(m.group(1) + ".txt");
 
                         if (file.exists()) {
@@ -272,9 +266,7 @@ public class PacketReader extends Thread {
 
                         }
 
-//                        System.out.println("packetString=" + packetString);
                         String messageWithoutGroupName = packetString.replaceAll("(#).*?\\S*", "");
-//                        System.out.println("messageWithoutGroupName=" + messageWithoutGroupName);
                         splitedMessage = messageWithoutGroupName.split(" ",2);
                         originalMessage = splitedMessage[1];
 
@@ -288,14 +280,31 @@ public class PacketReader extends Thread {
 
                     }
 
-//                    String mainMessage = packetString.replaceAll("(@|#).*?\\S*", "");
-//                    System.out.println(mainMessage);
-                    for (Socket socket : sockets) {
+                    if(isGroupMessage) {
 
-                        new UserCommand().displayInClientWindow(splitedMessage[0]+" "+originalMessage, socket);
+                        for (Socket socket : sockets) {
+
+                            new UserCommand().displayInClientWindow(splitedMessage[0] + " " + originalMessage, socket);
+                        }
+
+                        int lastWordPosition = splitedMessage[1].lastIndexOf(" ");
+                        String mainMessage = splitedMessage[1].substring(0, lastWordPosition).trim();
+                        String senderName = splitedMessage[1].substring((lastWordPosition)).trim();
+                        System.out.println(mainMessage +" from "+senderName);
+                        String historyMessage = "["+senderName+"] "+mainMessage;
+                        saveHistory(historyMessage);
+
+
+                    }
+                    else if(!isGroupMessage){
+
+                        for (Socket socket : sockets) {
+                            new UserCommand().displayInClientWindow(packetString, socket);
+                        }
                     }
 
                     break;
+
                 default:
 
 
@@ -305,6 +314,27 @@ public class PacketReader extends Thread {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+
+    }
+
+    public void saveHistory(String message){
+
+//        try {
+//            //Writing into file
+//            fWriter = new FileWriter(file.getName(), true);
+//            BufferedWriter out = new BufferedWriter(fWriter);
+//            scanner = new Scanner(file);
+//            if (scanner.hasNext()) {
+//                out.write("\n");
+//            }
+//            out.write(user);
+//            out.flush();
+//            out.close();
+//
+//
+//        } catch (IOException e) {
+//            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+//        }
 
     }
 
