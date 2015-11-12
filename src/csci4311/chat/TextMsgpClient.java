@@ -85,7 +85,8 @@ public class TextMsgpClient implements  MsgpClient{
     @Override
     public boolean isValidSendProtocol(String clientMessage) {
 
-        regEx = "send (@|#)[A-Za-z0-9]{1,50}";
+//        regEx = "send (@|#)[A-Za-z0-9]{1,30}[ A-Za-z0-9.-:;!*&^%$#?<>'']{1,100}";
+        regEx = "send ((@|#)[A-Za-z0-9]{1,30}.*)[ A-Za-z0-9.-:;!*&^%$#?<>'']{1,100}";
         return patternMatch(regEx);
     }
 

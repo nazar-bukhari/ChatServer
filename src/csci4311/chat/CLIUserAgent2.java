@@ -22,7 +22,7 @@ public class CLIUserAgent2 {
         try {
             Socket socket = new Socket(server, port);
 
-            new ClientReceiver(socket).start();
+            new ClientReceiver(socket,userName).start();
 
             BufferedReader keyRead = new BufferedReader(new InputStreamReader(System.in));
             OutputStream ostream = socket.getOutputStream();

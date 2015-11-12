@@ -38,7 +38,7 @@ public class CLIUserAgent implements UserAgent {
 
         try {
 
-            new ClientReceiver(socket).start();
+            new ClientReceiver(socket,userName).start();
 
         } catch (Exception ex) {
             ex.printStackTrace();

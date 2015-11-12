@@ -61,7 +61,7 @@ public class PacketReader extends Thread {
 
                             String[] clientRequest = packetStr.split(" ");
                             String baseCommand = clientRequest[0];
-                            response(baseCommand,clientRequest);
+                            response(baseCommand,clientRequest,packetStr);
                         }
                     }
 
@@ -76,7 +76,7 @@ public class PacketReader extends Thread {
         }
     }
 
-    public void response(String baseCommand,String[] packet) {
+    public void response(String baseCommand,String[] packet,String packetString) {
 
         String group;
 
@@ -230,6 +230,11 @@ public class PacketReader extends Thread {
                 case "send" :
 
 
+//                    String mainMessage = packetString.replaceAll("(@|#).*?\\S*", "");
+//                    System.out.println(mainMessage);
+                    for (Socket socket : sockets) {
+                        new UserCommand().displayInClientWindow(packetString, socket);
+                    }
 
                     break;
                 default:
