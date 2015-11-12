@@ -48,28 +48,30 @@ public class ClientReceiver extends Thread {
                     if (sendCommandMessage[0].equals("send")) {
 
                         String mainMessageWithSendCommand = receiveMessage.replaceAll("(@|#).*?\\S*", "");
-                        String[] mainMessage = mainMessageWithSendCommand.split(" ",2);
-//                        System.out.println(mainMessage);
+                        String[] mainMessageWithoutReceiverName = mainMessageWithSendCommand.split(" ",2);
+//                        System.out.println(mainMessageWithoutReceiverName[1]);
                         userList = new LinkedList<>();
 
-                        int lastWordPosition = mainMessage[1].lastIndexOf(" ");
-                        String originalMessage = mainMessage[1].substring(0, lastWordPosition).trim();
-                        String senderName = mainMessage[1].substring((lastWordPosition)).trim();
-                        System.out.println("originalMessage=" + originalMessage + " senderName=" + senderName);
+                        int lastWordPosition = mainMessageWithoutReceiverName[1].lastIndexOf(" ");
+                        String originalMessage = mainMessageWithoutReceiverName[1].substring(0, lastWordPosition).trim();
+                        String senderName = mainMessageWithoutReceiverName[1].substring((lastWordPosition)).trim();
+//                        System.out.println("originalMessage=" + originalMessage + " senderName=" + senderName);
 
                         String userRegEx = "@\\s*(\\w+)";
-                        String groupRegEx = "#\\s*(\\w+)";
 
                         Pattern p = Pattern.compile(userRegEx);
                         Matcher m = p.matcher(receiveMessage);
 
                         while (m.find()) {
-
+//                            System.out.println("recv="+m.group(1)+" client="+clientName);
                             userList.add(m.group(1));
                         }
                         if(userList.contains(clientName)){
                             System.out.println("["+senderName+"] "+originalMessage.trim());
                         }
+//                        else{
+//                            System.out.println(ReplyCode.ERROR.getReplyType());
+//                        }
 
 
                     } else {

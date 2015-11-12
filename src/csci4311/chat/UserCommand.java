@@ -236,7 +236,7 @@ public class UserCommand extends Thread {
                     br = new BufferedReader(new InputStreamReader(new FileInputStream(fileName)));
                     while ((line = br.readLine()) != null) {
                         if(clientCommand){
-                             displayInClientWindow("@"+line,socket);
+                            displayInClientWindow("@"+line,socket);
                         }
                         else{
                             System.out.println(line);      //Displaying users name in server prompt
@@ -265,6 +265,7 @@ public class UserCommand extends Thread {
     public void displayInClientWindow(String message,Socket socket){
 
         try{
+//            System.out.println("Broadcasting message : "+message);
             OutputStream ostream = socket.getOutputStream();
             PrintWriter pwrite = new PrintWriter(ostream, true);
             pwrite.println(message);
@@ -339,10 +340,10 @@ public class UserCommand extends Thread {
 
                 if(clientCommand){
                     try{
-                    OutputStream ostream = socket.getOutputStream();
-                    PrintWriter pwrite = new PrintWriter(ostream, true);
-                    pwrite.println("Not a member of #" + group);
-                    pwrite.flush();
+                        OutputStream ostream = socket.getOutputStream();
+                        PrintWriter pwrite = new PrintWriter(ostream, true);
+                        pwrite.println("Not a member of #" + group);
+                        pwrite.flush();
                     }
                     catch(Exception ex){
 

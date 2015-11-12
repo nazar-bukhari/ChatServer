@@ -2,21 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0155d7bd-0b85-4d83-ad7d-fef1d76e0962" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/csci4311/chat/test.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/ChatServer/csci4311/chat/Client.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/ChatServer/csci4311/chat/GossipClient.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/ChatServer/csci4311/chat/GossipServer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/csci4311/chat/Client.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChatServer/csci4311/chat/CLIUserAgent.class" afterPath="$PROJECT_DIR$/out/production/ChatServer/csci4311/chat/CLIUserAgent.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChatServer/csci4311/chat/PacketReader.class" afterPath="$PROJECT_DIR$/out/production/ChatServer/csci4311/chat/PacketReader.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChatServer/csci4311/chat/TextMsgpClient.class" afterPath="$PROJECT_DIR$/out/production/ChatServer/csci4311/chat/TextMsgpClient.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChatServer/csci4311/chat/UserCommand.class" afterPath="$PROJECT_DIR$/out/production/ChatServer/csci4311/chat/UserCommand.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/csci4311/chat/CLIUserAgent.java" afterPath="$PROJECT_DIR$/src/csci4311/chat/CLIUserAgent.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/csci4311/chat/CLIUserAgent2.java" afterPath="$PROJECT_DIR$/src/csci4311/chat/CLIUserAgent2.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/csci4311/chat/ClientReceiver.java" afterPath="$PROJECT_DIR$/src/csci4311/chat/ClientReceiver.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/csci4311/chat/PacketReader.java" afterPath="$PROJECT_DIR$/src/csci4311/chat/PacketReader.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/csci4311/chat/TextMsgpClient.java" afterPath="$PROJECT_DIR$/src/csci4311/chat/TextMsgpClient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/csci4311/chat/UserCommand.java" afterPath="$PROJECT_DIR$/src/csci4311/chat/UserCommand.java" />
     </list>
     <ignored path="ChatServer.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -92,11 +82,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PacketReader.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="PacketReader.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/csci4311/chat/PacketReader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="3088" max-vertical-offset="3855">
-              <caret line="221" column="30" selection-start-line="221" selection-start-column="30" selection-end-line="221" selection-end-column="30" />
+            <state vertical-scroll-proportion="0.42925277" vertical-offset="4005" max-vertical-offset="4755">
+              <caret line="285" column="99" selection-start-line="285" selection-start-column="99" selection-end-line="285" selection-end-column="99" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -107,7 +97,7 @@
       <file leaf-file-name="UserCommand.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/csci4311/chat/UserCommand.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="3730" max-vertical-offset="5520">
+            <state vertical-scroll-proportion="0.0" vertical-offset="3751" max-vertical-offset="5535">
               <caret line="264" column="16" selection-start-line="264" selection-start-column="16" selection-end-line="264" selection-end-column="16" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -116,11 +106,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ClientReceiver.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ClientReceiver.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/csci4311/chat/ClientReceiver.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4784689" vertical-offset="690" max-vertical-offset="1410">
-              <caret line="66" column="0" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="496" max-vertical-offset="1440">
+              <caret line="69" column="32" selection-start-line="69" selection-start-column="32" selection-end-line="69" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -131,8 +121,32 @@
       <file leaf-file-name="CLIUserAgent.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/csci4311/chat/CLIUserAgent.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="975">
-              <caret line="40" column="26" selection-start-line="40" selection-start-column="26" selection-end-line="40" selection-end-column="26" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="346" max-vertical-offset="975">
+              <caret line="40" column="43" selection-start-line="40" selection-start-column="43" selection-end-line="40" selection-end-column="43" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CLIUserAgent2.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/csci4311/chat/CLIUserAgent2.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="225" max-vertical-offset="960">
+              <caret line="51" column="18" selection-start-line="51" selection-start-column="18" selection-end-line="51" selection-end-column="18" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TextMsgpClient.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/csci4311/chat/TextMsgpClient.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="871" max-vertical-offset="1620">
+              <caret line="21" column="19" selection-start-line="21" selection-start-column="19" selection-end-line="21" selection-end-column="19" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -162,21 +176,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CLIUserAgent2.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/csci4311/chat/CLIUserAgent2.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="180" max-vertical-offset="855">
-              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="ClientSender.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/csci4311/chat/ClientSender.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="900">
-              <caret line="36" column="48" selection-start-line="36" selection-start-column="48" selection-end-line="36" selection-end-column="48" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="91" max-vertical-offset="900">
+              <caret line="36" column="44" selection-start-line="36" selection-start-column="44" selection-end-line="36" selection-end-column="44" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -212,7 +216,6 @@
         <option value="$PROJECT_DIR$/src/csci4311/chat/SendMessage.java" />
         <option value="$PROJECT_DIR$/src/csci4311/chat/Service.java" />
         <option value="$PROJECT_DIR$/src/csci4311/chat/GossipClient.java" />
-        <option value="$PROJECT_DIR$/src/csci4311/chat/UserCommand.java" />
         <option value="$PROJECT_DIR$/src/csci4311/chat/Client.java" />
         <option value="$PROJECT_DIR$/Group.txt" />
         <option value="$PROJECT_DIR$/111.txt" />
@@ -223,12 +226,13 @@
         <option value="$PROJECT_DIR$/src/csci4311/chat/ClientSender.java" />
         <option value="$PROJECT_DIR$/src/csci4311/chat/Reg.java" />
         <option value="$PROJECT_DIR$/222.txt" />
-        <option value="$PROJECT_DIR$/src/csci4311/chat/CLIUserAgent.java" />
-        <option value="$PROJECT_DIR$/src/csci4311/chat/CLIUserAgent2.java" />
         <option value="$PROJECT_DIR$/src/csci4311/chat/test.java" />
         <option value="$PROJECT_DIR$/src/csci4311/chat/TextMsgpClient.java" />
-        <option value="$PROJECT_DIR$/src/csci4311/chat/PacketReader.java" />
+        <option value="$PROJECT_DIR$/src/csci4311/chat/CLIUserAgent.java" />
+        <option value="$PROJECT_DIR$/src/csci4311/chat/CLIUserAgent2.java" />
+        <option value="$PROJECT_DIR$/src/csci4311/chat/UserCommand.java" />
         <option value="$PROJECT_DIR$/src/csci4311/chat/ClientReceiver.java" />
+        <option value="$PROJECT_DIR$/src/csci4311/chat/PacketReader.java" />
       </list>
     </option>
   </component>
@@ -711,7 +715,7 @@
       <workItem from="1447131718076" duration="22409000" />
       <workItem from="1447211940544" duration="6367000" />
       <workItem from="1447218670718" duration="19779000" />
-      <workItem from="1447297863731" duration="13607000" />
+      <workItem from="1447297863731" duration="22689000" />
     </task>
     <task id="LOCAL-00001" summary="Message send functionality on progress">
       <created>1447063089839</created>
@@ -723,11 +727,11 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="104635000" />
+    <option name="totallyTimeSpent" value="113717000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1855" height="1056" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -740,7 +744,7 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33805668" sideWeight="0.49973047" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3360324" sideWeight="0.49973047" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15040432" sideWeight="0.66071427" order="0" side_tool="false" content_ui="combo" />
@@ -1141,20 +1145,48 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/csci4311/chat/TextMsgpClient.java">
+    <entry file="file://$PROJECT_DIR$/src/csci4311/chat/test.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.96878254" vertical-offset="479" max-vertical-offset="1620">
-          <caret line="96" column="0" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="525">
+          <caret line="14" column="40" selection-start-line="14" selection-start-column="40" selection-end-line="14" selection-end-column="40" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/csci4311/chat/test.java">
+    <entry file="file://$PROJECT_DIR$/333.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="525">
-          <caret line="14" column="40" selection-start-line="14" selection-start-column="40" selection-end-line="14" selection-end-column="40" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="627">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/csci4311/chat/ClientReceiver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="496" max-vertical-offset="1440">
+          <caret line="69" column="32" selection-start-line="69" selection-start-column="32" selection-end-line="69" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/csci4311/chat/UserCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3751" max-vertical-offset="5535">
+          <caret line="264" column="16" selection-start-line="264" selection-start-column="16" selection-end-line="264" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/csci4311/chat/CLIUserAgent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="346" max-vertical-offset="975">
+          <caret line="40" column="43" selection-start-line="40" selection-start-column="43" selection-end-line="40" selection-end-column="43" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1171,36 +1203,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/csci4311/chat/CLIUserAgent2.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="180" max-vertical-offset="855">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/csci4311/chat/PacketReader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3088" max-vertical-offset="3855">
-          <caret line="221" column="30" selection-start-line="221" selection-start-column="30" selection-end-line="221" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/csci4311/chat/CLIUserAgent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="975">
-          <caret line="40" column="26" selection-start-line="40" selection-start-column="26" selection-end-line="40" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/csci4311/chat/UserCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3640" max-vertical-offset="5520">
-          <caret line="264" column="16" selection-start-line="264" selection-start-column="16" selection-end-line="264" selection-end-column="16" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="225" max-vertical-offset="960">
+          <caret line="51" column="18" selection-start-line="51" selection-start-column="18" selection-end-line="51" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1209,18 +1213,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/csci4311/chat/ClientSender.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="900">
-          <caret line="36" column="48" selection-start-line="36" selection-start-column="48" selection-end-line="36" selection-end-column="48" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="91" max-vertical-offset="900">
+          <caret line="36" column="44" selection-start-line="36" selection-start-column="44" selection-end-line="36" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/csci4311/chat/ClientReceiver.java">
+    <entry file="file://$PROJECT_DIR$/src/csci4311/chat/TextMsgpClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4784689" vertical-offset="690" max-vertical-offset="1410">
-          <caret line="66" column="0" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="871" max-vertical-offset="1620">
+          <caret line="21" column="19" selection-start-line="21" selection-start-column="19" selection-end-line="21" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/csci4311/chat/PacketReader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.42925277" vertical-offset="4005" max-vertical-offset="4755">
+          <caret line="285" column="99" selection-start-line="285" selection-start-column="99" selection-end-line="285" selection-end-column="99" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

@@ -6,46 +6,52 @@ import java.net.Socket;
 /**
  * Created by nazar on 11/9/15.
  */
-public class CLIUserAgent2 {
+public class CLIUserAgent2 implements UserAgent {
 
-//    The csci4311.chat.CLIUserAgent class must only implement user interaction, and no
+    //    The csci4311.chat.CLIUserAgent class must only implement user interaction, and no
 //            protocol details.
+    private static String userName;
+    private static String server;
+    private static int port;
+    Socket socket;
 
-    public static void main(String args[]){
+    public static void main(String args[]) {
 
-        String userName = args[0];
-        String server = args[1];
-        int port = Integer.parseInt(args[2]);
-
-        System.out.println("user="+userName+" server="+server+" port="+port);
+        userName = args[0];
+        server = args[1];
+        port = Integer.parseInt(args[2]);
 
         try {
             Socket socket = new Socket(server, port);
+            System.out.println("user=" + userName + " server=" + server + " port=" + port);
+            new CLIUserAgent2().packetReceiver(socket);
+            new CLIUserAgent2().packetSender(socket,userName);
+        } catch (Exception ex) {
 
+        }
+
+    }
+
+
+    @Override
+    public void packetReceiver(Socket socket) {
+
+        try {
             new ClientReceiver(socket,userName).start();
 
-            BufferedReader keyRead = new BufferedReader(new InputStreamReader(System.in));
-            OutputStream ostream = socket.getOutputStream();
-            PrintWriter pwrite = new PrintWriter(ostream, true);
-
-            InputStream istream = socket.getInputStream();
-            BufferedReader receiveRead = new BufferedReader(new InputStreamReader(istream));
-
-            System.out.println("type and press Enter key");
-
-            String receiveMessage, sendMessage;
-            while(true)
-            {
-                sendMessage = keyRead.readLine();  // keyboard reading
-                pwrite.println(sendMessage+" "+userName);       // sending to server
-                pwrite.flush();                    // flush the data
-                if((receiveMessage = receiveRead.readLine()) != null) //receive from server
-                {
-                    System.out.println(receiveMessage); // displaying at DOS prompt
-                }
-            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
-        catch(Exception ex){
+    }
+
+    @Override
+    public void packetSender(Socket socket,String userName) {
+
+        try {
+
+            new ClientSender(socket, userName).start();
+
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
     }

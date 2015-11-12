@@ -27,7 +27,7 @@ public class CLIUserAgent implements UserAgent {
             new CLIUserAgent().packetReceiver(socket);
             new CLIUserAgent().packetSender(socket,userName);
         } catch (Exception ex) {
-
+                ex.printStackTrace();
         }
 
     }
