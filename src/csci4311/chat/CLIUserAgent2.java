@@ -23,7 +23,7 @@ public class CLIUserAgent2 implements UserAgent {
 
         try {
             Socket socket = new Socket(server, port);
-            System.out.println("user=" + userName + " server=" + server + " port=" + port);
+//            System.out.println("user=" + userName + " server=" + server + " port=" + port);
             new CLIUserAgent2().packetReceiver(socket);
             new CLIUserAgent2().packetSender(socket,userName);
         } catch (Exception ex) {

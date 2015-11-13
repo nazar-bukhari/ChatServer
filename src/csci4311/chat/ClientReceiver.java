@@ -63,16 +63,12 @@ public class ClientReceiver extends Thread {
                         Matcher m = p.matcher(receiveMessage);
 
                         while (m.find()) {
-//                            System.out.println("recv="+m.group(1)+" client="+clientName);
+
                             userList.add(m.group(1));
                         }
                         if(userList.contains(clientName)){
                             System.out.println("["+senderName+"] "+originalMessage.trim());
                         }
-//                        else{
-//                            System.out.println(ReplyCode.ERROR.getReplyType());
-//                        }
-
 
                     } else {
                         System.out.println(receiveMessage); // displaying at DOS prompt

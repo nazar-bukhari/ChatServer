@@ -75,9 +75,9 @@ public class PacketReader extends Thread {
 
     public void response(String baseCommand, String[] packet, String packetString) {
 
-        String group;
+        String group = null;
         BufferedReader br;
-        File file;
+        File file = null;
         FileWriter fWriter;
         OutputStream ostream;
         PrintWriter pwrite;
@@ -182,6 +182,7 @@ public class PacketReader extends Thread {
                     new UserCommand().leaveGroup(user, group, socket, true);
 
                     break;
+
                 case "groups":
 
                     length = packet.length;
@@ -189,7 +190,6 @@ public class PacketReader extends Thread {
                     BufferedReader individualGroupbr;
 
                     try {
-
 
                         String groupValue;
 
@@ -226,9 +226,15 @@ public class PacketReader extends Thread {
                     break;
 
                 case "history":
-                    break;
-                case "send":
 
+                    group = packet[1];
+                    file = new File(group+"_history.txt");
+                    System.out.println("History file = "+file.getName());
+                    new UserCommand().showFileContents(file,true,socket);
+
+                    break;
+
+                case "send":
 
                     String groupRegEx = "#\\s*(\\w+)";
 
@@ -242,11 +248,12 @@ public class PacketReader extends Thread {
 
                     while (m.find()) {
 
-                        isGroupMessage = true;
-                        file = new File(m.group(1) + ".txt");
+                        group = m.group(1);
+                        file = new File( group+ ".txt");
 
                         if (file.exists()) {
-//                            System.out.println("file " + file.getName());
+
+                            isGroupMessage = true;
                             br = new BufferedReader(new InputStreamReader(new FileInputStream(file.getName())));
                             userList = new LinkedList<>();
 
@@ -264,23 +271,22 @@ public class PacketReader extends Thread {
                                 System.out.println(ReplyCode.NORESULT.getReplyType()); //User is not a member of the group
                             }
 
+
+                            String messageWithoutGroupName = packetString.replaceAll("(#).*?\\S*", "");
+                            splitedMessage = messageWithoutGroupName.split(" ", 2);
+                            originalMessage = splitedMessage[1];
+
+                            for (String s : userList) {
+
+                                originalMessage = "@" + s + " " + originalMessage;
+                            }
+
+                            System.out.println("originalMessage=" + splitedMessage[0] + " " + originalMessage + " packetString=" + packetString);
                         }
-
-                        String messageWithoutGroupName = packetString.replaceAll("(#).*?\\S*", "");
-                        splitedMessage = messageWithoutGroupName.split(" ",2);
-                        originalMessage = splitedMessage[1];
-
-                        for(String s : userList){
-
-                            originalMessage="@"+s+" "+originalMessage;
-                        }
-
-                        System.out.println("originalMessage="+splitedMessage[0]+" "+originalMessage+" packetString="+packetString);
-
 
                     }
 
-                    if(isGroupMessage) {
+                    if (isGroupMessage) {
 
                         for (Socket socket : sockets) {
 
@@ -290,13 +296,12 @@ public class PacketReader extends Thread {
                         int lastWordPosition = splitedMessage[1].lastIndexOf(" ");
                         String mainMessage = splitedMessage[1].substring(0, lastWordPosition).trim();
                         String senderName = splitedMessage[1].substring((lastWordPosition)).trim();
-                        System.out.println(mainMessage +" from "+senderName);
-                        String historyMessage = "["+senderName+"] "+mainMessage;
-                        saveHistory(historyMessage);
+                        System.out.println(mainMessage + " from " + senderName);
+                        String historyMessage = "[" + senderName + "] " + mainMessage;
+                        saveHistory(historyMessage, group);
 
 
-                    }
-                    else if(!isGroupMessage){
+                    } else if (!isGroupMessage) {
 
                         for (Socket socket : sockets) {
                             new UserCommand().displayInClientWindow(packetString, socket);
@@ -307,7 +312,6 @@ public class PacketReader extends Thread {
 
                 default:
 
-
             }
 
 
@@ -317,24 +321,25 @@ public class PacketReader extends Thread {
 
     }
 
-    public void saveHistory(String message){
+    public void saveHistory(String message, String groupName) {
 
-//        try {
-//            //Writing into file
-//            fWriter = new FileWriter(file.getName(), true);
-//            BufferedWriter out = new BufferedWriter(fWriter);
-//            scanner = new Scanner(file);
-//            if (scanner.hasNext()) {
-//                out.write("\n");
-//            }
-//            out.write(user);
-//            out.flush();
-//            out.close();
-//
-//
-//        } catch (IOException e) {
-//            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-//        }
+        try {
+            //Writing into file
+            File file = new File(groupName+"_history.txt");
+            FileWriter fWriter = new FileWriter(file.getName(), true);
+            BufferedWriter out = new BufferedWriter(fWriter);
+            Scanner scanner = new Scanner(file);
+            if (scanner.hasNext()) {
+                out.write("\n");
+            }
+            out.write(message);
+            out.flush();
+            out.close();
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 

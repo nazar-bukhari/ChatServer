@@ -50,14 +50,14 @@ public class TextMsgpClient implements  MsgpClient{
     @Override
     public boolean isValidJoinProtocol(String clientMessage) {
 
-        regEx = "join [A-Za-z0-9]{1,25}";
+        regEx = "join [A-Za-z0-9]{1,32}";
         return patternMatch(regEx);
     }
 
     @Override
     public boolean isValidLeaveProtocol(String clientMessage) {
 
-        regEx = "leave [A-Za-z0-9]{1,25}";
+        regEx = "leave [A-Za-z0-9]{1,32}";
         return patternMatch(regEx);
     }
 
@@ -72,21 +72,22 @@ public class TextMsgpClient implements  MsgpClient{
     @Override
     public boolean isValidUsersProtocol(String clientMessage) {
 
-        regEx = "users [A-Za-z0-9]{1,25}";
+        regEx = "users [A-Za-z0-9]{1,32}";
         return patternMatch(regEx);
 
     }
 
     @Override
     public boolean isValidHistoryProtocol(String clientMessage) {
-        return false;
+
+        regEx = "history [A-Za-z0-9]{1,32}";
+        return patternMatch(regEx);
     }
 
     @Override
     public boolean isValidSendProtocol(String clientMessage) {
 
-//        regEx = "send (@|#)[A-Za-z0-9]{1,30}[ A-Za-z0-9.-:;!*&^%$#?<>'']{1,100}";
-        regEx = "send ((@|#)[A-Za-z0-9]{1,30}.*)[ A-Za-z0-9.-:;!*&^%$#?<>'']{1,100}";
+        regEx = "send ((@|#)[A-Za-z0-9]{1,32}.*)[ A-Za-z0-9.-:;!*&^%$#?<>'']{1,100}";
         return patternMatch(regEx);
     }
 

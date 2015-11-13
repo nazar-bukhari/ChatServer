@@ -151,7 +151,7 @@ public class UserCommand extends Thread {
 
                     user = inputSet[2];
                     group = inputSet[3];
-                    leaveGroup(user, group,null,false);
+                    leaveGroup(user, group, null, false);
                 }
 
                 break;
@@ -161,31 +161,7 @@ public class UserCommand extends Thread {
 //                System.out.println("groups command");
 
                 File groupFile = new File("Group.txt");
-                if (groupFile.exists()) {
-
-                    try {
-
-                        BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("Group.txt")));
-                        String line = null;
-                        //Checking null group
-                        if (br.readLine() != null) {
-
-                            System.out.println(ReplyCode.OK.getReplyType());
-
-                            br = new BufferedReader(new InputStreamReader(new FileInputStream("Group.txt")));
-                            while ((line = br.readLine()) != null) {
-                                System.out.println(line);
-                            }
-                            br.close();
-                        } else {
-                            System.out.println(ReplyCode.NORESULT.getReplyType()); //User is not a member of the group
-                        }
-                    } catch (Exception ex) {
-                        ex.printStackTrace();
-                    }
-                } else {
-//                    System.out.println(ReplyCode.NORESULT.getReplyType()); //No such group
-                }
+                showFileContents(groupFile, false,null);
 
                 break;
 
@@ -195,7 +171,7 @@ public class UserCommand extends Thread {
                 if (length == 3) {
 
                     group = inputSet[2];
-                    usersCommand(group,null,false);
+                    usersCommand(group, null, false);
                 }
 
                 break;
@@ -217,7 +193,44 @@ public class UserCommand extends Thread {
 
     }
 
-    public void usersCommand(String group,Socket socket,boolean clientCommand){
+    public void showFileContents(File file, boolean clientCommand,Socket socket) {
+
+        if (file.exists()) {
+
+            try {
+
+                BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file.getName())));
+                String line = null;
+                //Checking null group
+                if (br.readLine() != null) {
+
+                    if (!clientCommand) {
+                        System.out.println(ReplyCode.OK.getReplyType());
+                    }
+
+                    br = new BufferedReader(new InputStreamReader(new FileInputStream(file.getName())));
+                    while ((line = br.readLine()) != null) {
+                        if (clientCommand) {
+                                displayInClientWindow(line,socket);
+                        }  else{
+                        System.out.println(line);
+                        }
+                    }
+                    br.close();
+                } else {
+                    if (!clientCommand) {
+                        System.out.println(ReplyCode.NORESULT.getReplyType()); //User is not a member of the group
+                    }
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        } else {
+//                    System.out.println(ReplyCode.NORESULT.getReplyType()); //No such group
+        }
+    }
+
+    public void usersCommand(String group, Socket socket, boolean clientCommand) {
 
         File file = new File(group + ".txt");
         String fileName = file.getName();
@@ -235,10 +248,9 @@ public class UserCommand extends Thread {
 //                        System.out.println("br "+br.readLine());
                     br = new BufferedReader(new InputStreamReader(new FileInputStream(fileName)));
                     while ((line = br.readLine()) != null) {
-                        if(clientCommand){
-                            displayInClientWindow("@"+line,socket);
-                        }
-                        else{
+                        if (clientCommand) {
+                            displayInClientWindow("@" + line, socket);
+                        } else {
                             System.out.println(line);      //Displaying users name in server prompt
                         }
                     }
@@ -251,32 +263,30 @@ public class UserCommand extends Thread {
             }
         } else {
 
-            if(clientCommand){
+            if (clientCommand) {
 
-                displayInClientWindow(ReplyCode.ERROR.getReplyType(),socket);
-            }
-            else{
+                displayInClientWindow(ReplyCode.ERROR.getReplyType(), socket);
+            } else {
                 System.out.println(ReplyCode.NORESULT.getReplyType()); //No such group
             }
         }
 
     }
 
-    public void displayInClientWindow(String message,Socket socket){
+    public void displayInClientWindow(String message, Socket socket) {
 
-        try{
+        try {
 //            System.out.println("Broadcasting message : "+message);
             OutputStream ostream = socket.getOutputStream();
             PrintWriter pwrite = new PrintWriter(ostream, true);
             pwrite.println(message);
             pwrite.flush();
-        }
-        catch(Exception ex){
+        } catch (Exception ex) {
 
         }
     }
 
-    public void leaveGroup(String user, String group,Socket socket,boolean clientCommand) {
+    public void leaveGroup(String user, String group, Socket socket, boolean clientCommand) {
 
         File file = new File(group + ".txt");
         String fileName = file.getName();
@@ -338,18 +348,16 @@ public class UserCommand extends Thread {
 
             if (isMember == false) {
 
-                if(clientCommand){
-                    try{
+                if (clientCommand) {
+                    try {
                         OutputStream ostream = socket.getOutputStream();
                         PrintWriter pwrite = new PrintWriter(ostream, true);
                         pwrite.println("Not a member of #" + group);
                         pwrite.flush();
-                    }
-                    catch(Exception ex){
+                    } catch (Exception ex) {
 
                     }
-                }
-                else{
+                } else {
                     System.out.println(ReplyCode.NORESULT.getReplyType()); //User is not a member of the group(201)
                 }
 
